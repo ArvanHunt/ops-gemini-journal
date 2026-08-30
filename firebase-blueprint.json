@@ -1,0 +1,71 @@
+{
+  "entities": {
+    "JournalEntry": {
+      "title": "JournalEntry",
+      "description": "A user's personal journal entry including reflection, chat messages, and AI synthesis",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the journal entry"
+        },
+        "userId": {
+          "type": "string",
+          "description": "The UID of the user who owns this entry"
+        },
+        "title": {
+          "type": "string",
+          "description": "Title of the journal entry"
+        },
+        "initialContent": {
+          "type": "string",
+          "description": "The user's initial journal text"
+        },
+        "mode": {
+          "type": "string",
+          "enum": ["reflection", "brainstorm", "clarity", "gratitude", "future_self", "incident_retro", "oncall_handover", "cve_triage"],
+          "description": "Journaling mode"
+        },
+        "createdAt": {
+          "type": "number",
+          "description": "Creation timestamp in epoch ms"
+        },
+        "updatedAt": {
+          "type": "number",
+          "description": "Last update timestamp in epoch ms"
+        }
+      },
+      "required": ["id", "userId", "title", "createdAt", "updatedAt"]
+    },
+    "UserInteraction": {
+      "title": "UserInteraction",
+      "description": "User interaction record or reflection history",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Interaction ID"
+        },
+        "userId": {
+          "type": "string",
+          "description": "User ID"
+        },
+        "timestamp": {
+          "type": "number",
+          "description": "Timestamp in epoch ms"
+        }
+      },
+      "required": ["id", "userId", "timestamp"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}/entries/{entryId}": {
+      "schema": "JournalEntry",
+      "description": "User's isolated journal entries"
+    },
+    "/users/{userId}/interactions/{interactionId}": {
+      "schema": "UserInteraction",
+      "description": "User's isolated interaction logs"
+    }
+  }
+}

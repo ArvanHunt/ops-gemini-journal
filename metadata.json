@@ -1,0 +1,8 @@
+{
+  "name": "Remix Remix Gemini Reflection Journal",
+  "description": "User-authenticated multi-turn reflection journal and AI brainstorming assistant with Firestore user isolation and Gemini 3.6 Flash.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
